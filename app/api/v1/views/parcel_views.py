@@ -28,3 +28,8 @@ class Parcel(Resource):
         """fetches a single order for the user/admin"""
 
         return db.get_single_order(order_id)
+
+    def _get(self, order_id):
+        """allows user to cancel a specific order"""
+        return db.cancel_order(order_id)
+
