@@ -43,10 +43,10 @@ class Parcels:
 
 janet = Parcels()
 janet.save_parcel('book', '987654321', '345678', 'kisumu', '31156', '2')
-# janet.save_parcel('kitabu', '987654321', '345678', 'kitale', '31156', '3')
+janet.save_parcel('kitabu', '987654321', '345678', 'kitale', '31156', '3')
 # print(janet.db)
 
-# print(janet.get_single_order(2))
+print(janet.get_single_order(2))
 # print(janet.cancel_order(1))
 # print(janet.get_all_parcels())
 # print(janet.change_destination(1))

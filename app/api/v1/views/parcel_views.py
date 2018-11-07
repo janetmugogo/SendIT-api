@@ -19,4 +19,12 @@ class Parcels(Resource):
         return make_response(jsonify({"message": "order created successfully"}))
 
     def get(self):
+        """get all orders from the database"""
         return db.get_all_parcels()
+
+
+class Parcel(Resource):
+    def get(self, order_id):
+        """fetches a single order for the user/admin"""
+
+        return db.get_single_order(order_id)
