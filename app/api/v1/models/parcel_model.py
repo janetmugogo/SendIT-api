@@ -41,8 +41,8 @@ class Parcels:
 
 
 
-# janet = Parcels()
-# janet.save_parcel('book', '987654321', '345678', 'kisumu', '31156', '2')
+janet = Parcels()
+janet.save_parcel('book', '987654321', '345678', 'kisumu', '31156', '2')
 # janet.save_parcel('kitabu', '987654321', '345678', 'kitale', '31156', '3')
 # print(janet.db)
 
