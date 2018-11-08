@@ -14,7 +14,7 @@ class Parcels:
             'location': location,
             'address': address,
             'weight': int(weight),
-            'status':"intransit",
+            'status':"in-transit",
             'destination':"nairobi"
         }
         self.db.append(new_order)
@@ -27,27 +27,28 @@ class Parcels:
         for order in self.db:
             if order['order_id'] == order_id:
                 return order
-    def cancel_order(self, order_id):
+
+    def cancel_order(self, order_id, status):
         for order in self.db:
             if order['order_id'] == order_id:
-                order['status'] = "cancelled"
+                order['status'] = status
 
-    # def change_destination(self, order_id):
-    #     for order in self.db:
-    #         if order['order_id'] == order_id and order['status'] == "intransit":
-    #             order['destination'] = "mombasa"
-
-
+    def change_destination(self, order_id, destination):
+        for order in self.db:
+            if order['order_id'] == order_id and order['status'] == "in-transit":
+                order['destination'] = destination
 
 
 
-janet = Parcels()
-janet.save_parcel('book', '987654321', '345678', 'kisumu', '31156', '2')
+
+#
+# janet = Parcels()
+# janet.save_parcel('book', '987654321', '345678', 'kisumu', '31156', '2')
 # janet.save_parcel('kitabu', '987654321', '345678', 'kitale', '31156', '3')
 # print(janet.db)
 
 # print(janet.get_single_order(2))
-# print(janet.cancel_order(2))
-print(janet.get_all_parcels())
+# print(janet.cancel_order(1))
+# print(janet.get_all_parcels())
 # print(janet.change_destination(1))
 

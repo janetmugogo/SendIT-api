@@ -11,14 +11,16 @@ class Users:
             'email': email,
             'password': password,
             'confirm_password': confirm_password,
-            # 'status': "intransit"
+            'admin':False
         }
         self.db.append(new_user)
 
-    def get_all_parcels(self):
-        return self.db
+    def get_single_user(self, user_id):
+        for user in self.db:
+            if user['user_id'] == user_id:
+                return user
 
-janet = Users()
-janet.save_user('denzel', 'denzelkanyi@gmail.com', '123', '123')
-print(janet.get_all_parcels())
-print(janet.db)
+# janet = Users()
+# janet.save_user('denzel', 'denzelkanyi@gmail.com', '123', '123')
+# print(janet.get_all_parcels())
+# print(janet.db)
