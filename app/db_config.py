@@ -1,7 +1,6 @@
 import psycopg2
 
-url = "dbname='SendIT' user='postgres' host='localhost' " + \
-      "password='password'"
+url = "dbname='SendIT' host='localhost' user='root' port='5263'  password='password'"
 
 
 def connection(url):
@@ -13,8 +12,14 @@ def init_db():
     con = connection(url)
     return con
 
- #insert sql commands here,describe table and entities
+
+# insert sql commands here,describe table and entities
 def create_tables():
+    cursor.execute(sql)
+
+    # disconnect from server
+    db.close()
+
     conn = connection(url)
     cursor = conn.cursor()
     queries = tables()
@@ -26,6 +31,13 @@ def create_tables():
 def destroy_tables():
     pass
 
-#tinsert tables query=[table1,table2] return query
+
+# tinsert tables query=[table1,table2] return query
 def tables():
-    pass
+    table1 = """CREATE TABLE IF NOT EXISTS  ORDER(
+                      order_id serial PRIMARYKEY NOT NULL, name CHAR(20) NOT NULL,
+                       phonenumber INT, idnumber INT, 
+                       location CHAR(20), 
+                       address CHAR, weight INT)"""
+    q = [table1]
+    return query
