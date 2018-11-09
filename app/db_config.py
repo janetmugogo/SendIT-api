@@ -1,5 +1,6 @@
 import psycopg2
 
+
 url = "dbname='SendIT' host='localhost' user='root' port='5263'  password='password'"
 
 
@@ -16,7 +17,6 @@ def init_db():
 # insert sql commands here,describe table and entities
 def create_tables():
     cursor.execute(sql)
-
     # disconnect from server
     db.close()
 
@@ -39,5 +39,5 @@ def tables():
                        phonenumber INT, idnumber INT, 
                        location CHAR(20), 
                        address CHAR, weight INT)"""
-    q = [table1]
-    return query
+    queries = [table1]
+    return queries
