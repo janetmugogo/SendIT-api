@@ -2,7 +2,8 @@ import unittest
 from app.api.v1.models.parcel_model import Parcels
 
 parcels = Parcels()
-"""inherit Testcase from unittest"""
+
+# inherit Testcase from unittest
 from app import create_app
 
 

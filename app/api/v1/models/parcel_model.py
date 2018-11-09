@@ -5,6 +5,8 @@ class Parcels:
     def __init__(self):
         self.db = parcels
 
+    # the user creates an order and it is saved/stored in the dictionary
+
     def save_parcel(self, name, phonenumber, idnumber, location, address, weight):
         new_order = {
             'order_id': len(self.db) + 1,
@@ -19,32 +21,29 @@ class Parcels:
         }
         self.db.append(new_order)
 
+        # user can get all the orders they have created
+
     def get_all_parcels(self):
 
         return self.db
+
+        # user can fetch for a specific order using an order_id
 
     def get_single_order(self, order_id):
         for order in self.db:
             if order['order_id'] == order_id:
                 return order
+        # user can cancel a specific order, and when the status of the order is in-transit
 
     def cancel_order(self, order_id, status):
         for order in self.db:
             if order['order_id'] == order_id:
                 order['status'] = status
 
+        # user can change the  destination of a parcel when it is in-transit
+
     def change_destination(self, order_id, destination):
         for order in self.db:
             if order['order_id'] == order_id and order['status'] == "in-transit":
                 order['destination'] = destination
 
-#
-# janet = Parcels()
-# janet.save_parcel('book', '987654321', '345678', 'kisumu', '31156', '2')
-# janet.save_parcel('kitabu', '987654321', '345678', 'kitale', '31156', '3')
-# print(janet.db)
-
-# print(janet.get_single_order(2))
-# print(janet.cancel_order(1))
-# print(janet.get_all_parcels())
-# print(janet.change_destination(1))

@@ -5,7 +5,10 @@ from flask import request, jsonify, make_response
 db = Parcels()
 
 
+# Multiple parcels class
 class Parcels(Resource):
+
+    # the user creates an order
     def post(self):
         data = request.get_json(force=True)
         name = data['name']
@@ -18,23 +21,25 @@ class Parcels(Resource):
         db.save_parcel(name, phonenumber, idnumber, location, address, weight)
         return make_response(jsonify({"message": "order created successfully"}))
 
+    # the user can fetch all parcel delivery orders
     def get(self):
-        """get all orders from the database"""
         return db.get_all_parcels(), 200
 
 
+# single parcel class
 class Parcel(Resource):
+    # the user can fetch for a specific parcel deivery order using order_id
     def get(self, order_id):
-        """fetches a single order for the user/admin"""
         order = db.get_single_order(order_id)
         if order:
             return order, 200
         return make_response(jsonify({"message": "order does not exist"})), 404
 
 
+# cancel order class
 class Cancel(Resource):
+    # the user can cancel a specific order only when it is in-transit
     def put(self, order_id):
-        """allows user to cancel a specific order"""
         data = request.get_json()
         status = data['status']
         order = db.get_single_order(order_id)
@@ -44,9 +49,10 @@ class Cancel(Resource):
         return make_response(jsonify({"message": "order does not exist"})), 404
 
 
+# change destination of a parcel class
 class ChangeDestination(Resource):
+    # change destination of a specific order in their list of orders only when it is in transit
     def put(self, order_id):
-        """allow user to change destination"""
         data = request.get_json()
         destination = data['destination']
         order = db.get_single_order(order_id)

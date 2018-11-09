@@ -5,6 +5,7 @@ from flask import request, jsonify, make_response
 db = Users()
 
 
+# validating the input fields in the form, each field is required
 class Users(Resource):
     parser = reqparse.RequestParser()
     parser.add_argument(
@@ -19,6 +20,7 @@ class Users(Resource):
     parser.add_argument(
         'confirm_password', type=str, required=True, help='confirm_password field is required', location='json')
 
+    # if a specic input field is blank, it means they cannot submit their information since all fields are required
     def post(self):
         data = Users.parser.parse_args()
         for input in data.values():
