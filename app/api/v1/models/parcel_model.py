@@ -14,8 +14,8 @@ class Parcels:
             'location': location,
             'address': address,
             'weight': int(weight),
-            'status':"in-transit",
-            'destination':"nairobi"
+            'status': "in-transit",
+            'destination': "nairobi"
         }
         self.db.append(new_order)
 
@@ -38,9 +38,6 @@ class Parcels:
             if order['order_id'] == order_id and order['status'] == "in-transit":
                 order['destination'] = destination
 
-
-
-
 #
 # janet = Parcels()
 # janet.save_parcel('book', '987654321', '345678', 'kisumu', '31156', '2')
@@ -51,4 +48,3 @@ class Parcels:
 # print(janet.cancel_order(1))
 # print(janet.get_all_parcels())
 # print(janet.change_destination(1))
-

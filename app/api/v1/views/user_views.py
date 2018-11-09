@@ -19,7 +19,6 @@ class Users(Resource):
     parser.add_argument(
         'confirm_password', type=str, required=True, help='confirm_password field is required', location='json')
 
-
     def post(self):
         data = Users.parser.parse_args()
         for input in data.values():

@@ -42,6 +42,8 @@ class Cancel(Resource):
             db.cancel_order(order_id, status)
             return {"message": "order status updated successfully"}
         return make_response(jsonify({"message": "order does not exist"})), 404
+
+
 class ChangeDestination(Resource):
     def put(self, order_id):
         """allow user to change destination"""
@@ -52,4 +54,3 @@ class ChangeDestination(Resource):
             db.change_destination(order_id, destination)
             return {"message": "destination updated successfully"}
         return make_response(jsonify({"message": "order does not exist"})), 404
-
