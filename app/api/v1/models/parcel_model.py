@@ -1,4 +1,18 @@
-parcels = []
+parcels = [
+    {
+
+    'order_id':'1',
+    'name': 'mary kanyi',
+    'phonenumber': 22345671,
+    'idnumber':'3456677',
+    'location':'kisumu',
+    'address':'31154',
+     'weight':2,
+     'status': 'in-transit',
+    'destination':'mombasa',
+    'user_id': 1
+    }
+]
 
 
 class Parcels:
@@ -7,7 +21,7 @@ class Parcels:
 
     # the user creates an order and it is saved/stored in the dictionary
 
-    def save_parcel(self, name, phonenumber, idnumber, location, address, weight):
+    def save_parcel(self, name, phonenumber, idnumber, location, address, weight, user_id):
         new_order = {
             'order_id': len(self.db) + 1,
             'name': name,
@@ -17,7 +31,8 @@ class Parcels:
             'address': address,
             'weight': int(weight),
             'status': "in-transit",
-            'destination': "nairobi"
+            'destination': "nairobi",
+            'user_id': user_id
         }
         self.db.append(new_order)
 
@@ -46,4 +61,28 @@ class Parcels:
         for order in self.db:
             if order['order_id'] == order_id and order['status'] == "in-transit":
                 order['destination'] = destination
+
+    def specific_user_order(self, user_id):
+        orders=[]
+        for order in self.db:
+            if order['user_id'] == (user_id):
+                orders.append(order)
+        payload = {
+            "message": "success",
+            "delivery_order": orders
+        }
+        return payload
+
+    # def get_all_orders_by_specific_user(self, user):
+    #     orders = []
+    #     for order in self.database:
+    #         if order["user"] == str(user):
+    #             orders.append(order)
+    #             payload = {
+    #                 "message": "success",
+    #                 "parcel_order": orders
+    #             }
+    #     return payload
+
+
 

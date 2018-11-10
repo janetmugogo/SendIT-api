@@ -17,8 +17,9 @@ class Parcels(Resource):
         location = data['location']
         address = data['address']
         weight = data['weight']
+        user_id = 'user_id'
 
-        db.save_parcel(name, phonenumber, idnumber, location, address, weight)
+        db.save_parcel(name, phonenumber, idnumber, location, address, weight, user_id)
         return make_response(jsonify({"message": "order created successfully"}))
 
     # the user can fetch all parcel delivery orders
@@ -60,3 +61,26 @@ class ChangeDestination(Resource):
             db.change_destination(order_id, destination)
             return {"message": "destination updated successfully"}
         return make_response(jsonify({"message": "order does not exist"})), 404
+
+
+# cancel order class
+class SpecificUserOrder(Resource):
+    # def __init__(self):
+    #     self.parcel = Parcels()
+        # the user can cancel a specific order only when it is intransit
+      def get(self, user_id):
+        order = db.specific_user_order(user_id)
+
+        return make_response(jsonify(order), 200)
+
+
+# class UserSpecificParcelOrderView(Resource, ParcelOrder):
+#     """docstring for UserSpecificParcelOrderView"""
+#
+#     def __init__(self):
+#         self.parcel = ParcelOrder()
+#
+#     def get(self, user_id):
+#         user_parcel_orders = self.parcel.get_all_orders_by_specific_user(
+#             user_id)
+#         return make_response(jsonify(user_parcel_orders), 200)
