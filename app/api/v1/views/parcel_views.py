@@ -1,6 +1,6 @@
 from flask_restful import Resource, Api, reqparse
 from app.api.v1.models.parcel_model import Parcels
-from flask import request, jsonify, make_response
+from flask import Flask, request, jsonify, make_response
 
 db = Parcels()
 
@@ -65,22 +65,9 @@ class ChangeDestination(Resource):
 
 # cancel order class
 class SpecificUserOrder(Resource):
-    # def __init__(self):
-    #     self.parcel = Parcels()
-        # the user can cancel a specific order only when it is intransit
-      def get(self, user_id):
+    # the user can cancel a specific order only when it is intransit
+    def get(self, user_id):
         order = db.specific_user_order(user_id)
-
         return make_response(jsonify(order), 200)
 
-
-# class UserSpecificParcelOrderView(Resource, ParcelOrder):
-#     """docstring for UserSpecificParcelOrderView"""
 #
-#     def __init__(self):
-#         self.parcel = ParcelOrder()
-#
-#     def get(self, user_id):
-#         user_parcel_orders = self.parcel.get_all_orders_by_specific_user(
-#             user_id)
-#         return make_response(jsonify(user_parcel_orders), 200)

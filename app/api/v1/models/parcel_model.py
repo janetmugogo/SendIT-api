@@ -1,17 +1,17 @@
 parcels = [
-    {
-
-    'order_id':'1',
-    'name': 'mary kanyi',
-    'phonenumber': 22345671,
-    'idnumber':'3456677',
-    'location':'kisumu',
-    'address':'31154',
-     'weight':2,
-     'status': 'in-transit',
-    'destination':'mombasa',
-    'user_id': 1
-    }
+    # {
+    #
+    # 'order_id':'1',
+    # 'name': 'mary kanyi',
+    # 'phonenumber': 22345671,
+    # 'idnumber':'3456677',
+    # 'location':'kisumu',
+    # 'address':'31154',
+    #  'weight':2,
+    #  'status': 'in-transit',
+    # 'destination':'mombasa',
+    # 'user_id': 1
+    # }
 ]
 
 
