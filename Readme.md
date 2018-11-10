@@ -1,8 +1,14 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/janetmugogo/SendIT-api/badge.svg)]
 (https://coveralls.io/github/janetmugogo/SendIT-api)
-
 https://travis-ci.org/janetmugogo/SendIT-api.svg?branch=test_travis
+
+
+[![Coverage Status](https://coveralls.io/repos/github/janetmugogo/SendIT-api/badge.svg)](https://coveralls.io/github/janetmugogo/SendIT-api)
+
+
+
+
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/18e7c5a2fee1e92ba154/maintainability)](https://codeclimate.com/github/janetmugogo/SendIT-api/maintainability)
 
