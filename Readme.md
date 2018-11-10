@@ -3,7 +3,7 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/18e7c5a2fee1e92ba154/maintainability)](https://codeclimate.com/github/janetmugogo/SendIT-api/maintainability)
 
-https://travis-ci.org/janetmugogo/SendIT-api.svg?branch=test_travis
+[![Build Status](https://travis-ci.com/janetmugogo/SendIT-api.svg?branch=test_travis)](https://travis-ci.com/janetmugogo/SendIT-api)
 
 SendIT is a courier service that helps users deliver parcels to different destinations. SendIT provides courier quotes based on weight categories.
 
