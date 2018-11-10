@@ -3,12 +3,12 @@ python:
  - "3.6.4"
 # command to install dependencies
 install:
- - pip install -r requirements.txt
- - pip install nose
- - pip install coveralls
+  - pip install -r requirements.txt
+  - pip install nose
+  - pip install coveralls
 
 # command to run tests
 script:
-nosetests --with-coverage --cover-package=app
+  - nosetests --with-coverage --cover-package=app
 after_success:
- - coveralls
+  - coveralls
