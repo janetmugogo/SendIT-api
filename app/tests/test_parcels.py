@@ -40,11 +40,5 @@ class TestParcel(BaseTest):
         response = self.client.put('/api/v1/parcels/1/cancel')
         self.assertEqual(response.status_code, 200)
 
-
-
-
-
-
-
 if __name__ == '__main__':
     unittest.main()
