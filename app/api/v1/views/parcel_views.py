@@ -13,22 +13,10 @@ class Parcels(Resource):
     # the user creates an order
     def post(self):
         data = request.get_json(force=True)
-        if "price" not in data:
-            return make_response(jsonify(message="incomplete request"), 400)
-        if "name" not in data:
-            return make_response(jsonify(message="incomplete request"), 400)
-        if "phonenumber" not in data:
-            return make_response(jsonify(message="incomplete request"), 400)
-        if "idnumber" not in data:
-            return make_response(jsonify(message="incomplete request"), 400)
-        if "location" not in data:
-            return make_response(jsonify(message="incomplete request"), 400)
-        if "address" not in data:
-            return make_response(jsonify(message="incomplete request"), 400)
-        if "weight" not in data:
-            return make_response(jsonify(message="incomplete request"), 400)
-        if "user_id" not in data:
-            return make_response(jsonify(message="incomplete request"), 400)
+        required_params = ('name', 'phonenumber', 'idnumber', 'location', 'address', 'weight', 'price', 'user_id')
+        for param in required_params:
+            if param not in data:
+                return make_response(jsonify(message="incomplete request"), 400)
         name = data['name']
         phonenumber = data['phonenumber']
         idnumber = data['idnumber']
@@ -78,7 +66,7 @@ class Parcel(Resource):
 
 # specific user class
 class SpecificUserOrder(Resource):
-    # the user can cancel a specific order only when it is intransit
+    #fetch all parcel delivery orders by specific id
     def get(self, user_id):
         try:
             int(user_id)
