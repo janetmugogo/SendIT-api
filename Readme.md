@@ -10,12 +10,12 @@ SendIT is a courier management API, which will help users in getting information
 | Method | Endpoint | Description |
 | --- | --- | --- |
 |GET | /api/v1/parcel  | Get all parcel delivery orders |
-|GET | /api/v1/parcel<parcelid>  | Get a specific parcel delivery order by id |
+|GET | /api/v1/parcel/parcelid  | Get a specific parcel delivery order by id |
 |POST | /api/v1/users | create a user(register) |
-|GET | /api/v1/user<userid>  | Get a all parcel delivery orders by specific user  |
-|PUT | /api/v1/parcels/<parcelid>/cancel | cancel the specifc parcel delivery order |
+|GET | /api/v1/user/userid  | Get a all parcel delivery orders by specific user  |
+|PUT | /api/v1/parcels/parcelid/cancel | cancel the specifc parcel delivery order |
 |POST | /api/v1/parcels | create a parcel delivery order |
-|PUT | /api/v1/parcels/<parcelid>/changedestination | change destination of a parcel by id |
+|PUT | /api/v1/parcels/parcelid/changedestination | change destination of a parcel by id |
 
 ## Running and testing the API endpoints
  - python  -version 3.6 +
@@ -45,5 +45,7 @@ SendIT is a courier management API, which will help users in getting information
  on the terminal, write this
   - nosetests --with-coverage --cover-package=app && coverage report
  
-
+## To Run the development server
+ -$ export FLASK_APP=run.py
+ -$ flask run
 

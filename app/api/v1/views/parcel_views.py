@@ -7,11 +7,27 @@ db = Parcels()
 
 # Multiple parcels class
 class Parcels(Resource):
+    def __init__(self):
+        self.user_id = 1
 
     # the user creates an order
     def post(self):
         data = request.get_json(force=True)
         if "price" not in data:
+            return make_response(jsonify(message="incomplete request"), 400)
+        if "name" not in data:
+            return make_response(jsonify(message="incomplete request"), 400)
+        if "phonenumber" not in data:
+            return make_response(jsonify(message="incomplete request"), 400)
+        if "idnumber" not in data:
+            return make_response(jsonify(message="incomplete request"), 400)
+        if "location" not in data:
+            return make_response(jsonify(message="incomplete request"), 400)
+        if "address" not in data:
+            return make_response(jsonify(message="incomplete request"), 400)
+        if "weight" not in data:
+            return make_response(jsonify(message="incomplete request"), 400)
+        if "user_id" not in data:
             return make_response(jsonify(message="incomplete request"), 400)
         name = data['name']
         phonenumber = data['phonenumber']
@@ -20,9 +36,9 @@ class Parcels(Resource):
         address = data['address']
         weight = data['weight']
         price = data['price']
-        # user_id = data['user_id']
+        user_id = self.user_id + 1
 
-        db.save_parcel(name, phonenumber, idnumber, location, address, weight, price)
+        db.save_parcel(name, phonenumber, idnumber, location, address, weight, price, user_id)
 
         return make_response(jsonify (message = "order created successfully"), 201)
 
@@ -31,7 +47,7 @@ class Parcels(Resource):
         parcel_order = db.get_all_parcels()
         if parcel_order:
             payload ={
-                "message":"created order",
+
                 "parcel delivery order": parcel_order
             }
             return make_response(jsonify(payload), 200)
@@ -46,10 +62,15 @@ class Parcels(Resource):
 class Parcel(Resource):
     # the user can fetch for a specific parcel deivery order using order_id
     def get(self, order_id):
+        try:
+            int(order_id)
+        except ValueError:
+            return "invalid order_id"
+        else:
+            order_id = int(order_id)
         order = db.get_single_order(order_id)
         if order:
             payload ={
-                "message":"your order",
                 "order": order
             }
             return make_response(jsonify(payload), 200)
@@ -59,18 +80,15 @@ class Parcel(Resource):
 class SpecificUserOrder(Resource):
     # the user can cancel a specific order only when it is intransit
     def get(self, user_id):
-        user_order = self.specific_user_order(user_id)
-        if user_order:
-            payload = {
-                "message": "your order",
-                "order": user_order
-            }
-            return make_response(jsonify(payload), 200)
+        try:
+            int(user_id)
+        except ValueError:
+            return "invalid user_id"
         else:
-            payload = {
-                "message": "The user order is not found"
-            }
-            return make_response(jsonify(payload), 404)
+            user_id = int(user_id)
+        user_order = db.specific_user_order(user_id)
+        return user_order
+
 
 # cancel order class
 class Cancel(Resource):
@@ -78,35 +96,7 @@ class Cancel(Resource):
     def put(self, order_id):
         order = db.get_single_order(order_id)
         if order:
-            db.cancel_order(order_id)
-            return make_response(jsonify({"message":"The order has been cancelled"}), 200)
-
+            result = db.cancel_order(order_id)
+            return make_response(jsonify(result))
         return make_response(jsonify({"message":"Order not found"}), 404)
-
-
-# change destination of a parcel class
-class ChangeDestination(Resource):
-    # change destination of a specific order in their list of orders only when it is in transit
-    def put(self, order_id):
-        data = request.get_json()
-        order_parcel = db.get_single_order(order_id)
-        if order_parcel:
-         order_destination = data['destination']
-        if len(order_destination) < 5 or order_destination == '':
-            payload = {
-                "message": "please provide a valid destination address"
-            }
-            return make_response(jsonify(payload), 404)
-        if not isinstance(order_destination, str):
-            payload = {
-                "message": "Destination must be characters"
-            }
-            return make_response(jsonify(payload), 404)
-        else:
-            db.change_destination(order_id, order_destination)
-            payload = {
-                "message":"order destination changed succesfully"
-            }
-            return make_response(jsonify(payload), 200)
-
 

@@ -1,4 +1,3 @@
-import uuid
 parcels = []
 
 
@@ -8,7 +7,7 @@ class Parcels:
 
     # the user creates an order and it is saved/stored in the dictionary
 
-    def save_parcel(self, name, phonenumber, idnumber, location, address, weight, price):
+    def save_parcel(self, name, phonenumber, idnumber, location, address, weight, price, user_id):
         new_order = {
             'order_id': len(self.db) + 1,
             'name': name,
@@ -20,50 +19,59 @@ class Parcels:
             'status': "in-transit",
             'destination': "destination",
             'price': int(price),
-            'user_id': str(uuid.uuid4())
+            'user_id': user_id
         }
 
         self.db.append(new_order)
 
 
-        # user can get all the orders they have created
+    # user can get all the orders they have created
 
     def get_all_parcels(self):
 
         return self.db
 
-        # user can fetch for a specific order using an order_id
+    # user can fetch for a specific order using an order_id
 
     def get_single_order(self, order_id):
+        print(order_id)
+        try:
+            order_id=int(order_id)
+        except ValueError:
+            return {"message":"invalid id"}
         for order in self.db:
             if order['order_id'] == order_id:
                 return order
-        # user can cancel a specific order, and when the status of the order is in-transit
+
+    # user can cancel a specific order, and when the status of the order is in-transit
 
     def cancel_order(self, order_id):
+        print(order_id)
+        try:
+            order_id = int(order_id)
+        except ValueError:
+            return {"message": "invalid order_id"}
         for order in self.db:
             if order['order_id'] == order_id:
-                if order["status"] == "undelivered":
+                if order["status"] in ("undelivered", "in-transit"):
                     order['status'] = "cancelled"
+                    message = {"message": "The order has been cancelled"}
+                else:
+                    message = {"message": "Already cancelled, cannot cancel twice"}
+                return message
 
-        # user can change the  destination of a parcel when it is in-transit
-
-    def change_destination(self, order_id, destination):
-        for order in self.db:
-            if order['order_id'] == order:
-                if order["status"] == "undelivered":
-                 order['destination'] = destination
+     #fetch all parcel delivery orders by a specific user
 
     def specific_user_order(self, user_id):
-        orders=[]
+        orders = []
         for order in self.db:
-            if order['user_id'] == (user_id):
+            if order['user_id'] == user_id:
                 orders.append(order)
-        payload = {
-            "message": "success",
-            "delivery_order": orders
-        }
-        return payload
+        if not orders:
+            return "Order not found"
+        return orders
+
+
 
 
 
