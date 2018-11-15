@@ -1,3 +1,4 @@
+import uuid
 parcels = []
 
 
@@ -7,7 +8,7 @@ class Parcels:
 
     # the user creates an order and it is saved/stored in the dictionary
 
-    def save_parcel(self, name, phonenumber, idnumber, location, address, weight, price, user_id):
+    def save_parcel(self, name, phonenumber, idnumber, location, address, weight, price):
         new_order = {
             'order_id': len(self.db) + 1,
             'name': name,
@@ -19,7 +20,7 @@ class Parcels:
             'status': "in-transit",
             'destination': "destination",
             'price': int(price),
-            'user_id': user_id
+            'user_id': str(uuid.uuid4())
         }
 
         self.db.append(new_order)
@@ -39,11 +40,11 @@ class Parcels:
                 return order
         # user can cancel a specific order, and when the status of the order is in-transit
 
-    def cancel_order(self, order_id, status):
+    def cancel_order(self, order_id):
         for order in self.db:
             if order['order_id'] == order_id:
                 if order["status"] == "undelivered":
-                  order['status'] = status
+                    order['status'] = "cancelled"
 
         # user can change the  destination of a parcel when it is in-transit
 

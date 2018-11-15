@@ -29,41 +29,32 @@ class TestParcel(BaseTest):
          response = self.client.get('/api/v1/parcels')
          self.assertIn("There are no created orders", str(response.data))
 
-    def test_get_order_by_id(self):
-        response = self.client.post('/api/v1/parcels', data=json.dumps(self.test_parcel), content_type='application/json')
-        self.assertEqual(response.status_code, 201)
-        print(response)
-        # resp = self.client.get('/api/v1/parcels/1')
-        # self.assertEqual(resp.status_code, 200)
+    # def test_get_order_by_id(self):
+    #     response = self.client.post('/api/v1/parcels', data=json.dumps(self.test_parcel), content_type='application/json')
+    #     self.assertEqual(response.status_code, 201)
+    #     print(response)
+    #     # resp = self.client.get('/api/v1/parcels/1')
+    #     # self.assertEqual(resp.status_code, 200)
 
 
     def test_get_char_insteadof_integer(self):
         response = self.client.get('/api/v1/parcels/Hello')
         self.assertEqual(response.status_code, 404)
-    #
-    # def test_cancel_order(self):
-    #     response = self.client.post('/api/v1/parcels', data=json.dumps(self.test_parcel), content_type='application/json')
-    #     self.assertEqual(response.status_code, 201)
-    #     response = self.client.put('/api/v1/parcels/1/cancel', data=json.dumps(self.cancel_order),
-    #                                content_type='application/json')
-    #     self.assertEqual(response.status_code, 200)
-    #
-    # def test_unexisting_order(self):
-    #     response = self.client.post('/api/v1/parcels', data=json.dumps(self.test_parcel),
-    #                                 content_type='application/json')
-    #     self.assertEqual(response.status_code, 201)
-    #     response = self.client.put('/api/v1/parcels/500/cancel' ,data=json.dumps(self.cancel_unexisting_order),
-    #                                content_type='application/json')
-    #     self.assertEqual(response.ststus_code, 404)
-    #
-    #
-    # def test_change_destination(self):
-    #     response = self.client.post('/api/v1/parcels', data=json.dumps(self.test_parcel), content_type='application/json')
-    #     self.assertEqual(response.status_code, 201)
-    #     response = self.client.put('/api/v1/parcels/1/changedestination', data=json.dumps(self.change_destination),
-    #                                content_type='application/json')
-    #     self.assertEqual(response.status_code, 200)
-    #
+
+    def test_cancel_order(self):
+        response = self.client.post('/api/v1/parcels', data=json.dumps(self.test_parcel), content_type='application/json')
+        self.assertEqual(response.status_code, 201)
+        response = self.client.put('/api/v1/parcels/1/cancel')
+        self.assertEqual(response.status_code, 200)
+
+
+    def test_change_destination(self):
+        response = self.client.post('/api/v1/parcels', data=json.dumps(self.test_parcel), content_type='application/json')
+        self.assertEqual(response.status_code, 201)
+        response = self.client.put('/api/v1/parcels/1/changedestination', data=json.dumps(self.change_destination),
+                                   content_type='application/json')
+        self.assertEqual(response.status_code, 200)
+
     # def test_change_destination_with_wrong_details(self):
     #     response = self.client.post('/api/v1/parcels', data=json.dumps(self.test_parcel),
     #                                 content_type='application/json')

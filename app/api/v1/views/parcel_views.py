@@ -20,9 +20,9 @@ class Parcels(Resource):
         address = data['address']
         weight = data['weight']
         price = data['price']
-        user_id = data['user_id']
+        # user_id = data['user_id']
 
-        db.save_parcel(name, phonenumber, idnumber, location, address, weight, price, user_id)
+        db.save_parcel(name, phonenumber, idnumber, location, address, weight, price)
 
         return make_response(jsonify (message = "order created successfully"), 201)
 
@@ -76,18 +76,12 @@ class SpecificUserOrder(Resource):
 class Cancel(Resource):
     # the user can cancel a specific order only when it is in-transit
     def put(self, order_id):
-        cancel_order = db.cancel_order(order_id)
-        if cancel_order:
-            payload = {
-                "message":"order cancelled",
-                "order":cancel_order
-            }
-            return make_response(jsonify(payload), 200)
-        else:
-            payload = {
-                "message":"The order has been cancelled"
-            }
-        return make_response(jsonify(payload), 404)
+        order = db.get_single_order(order_id)
+        if order:
+            db.cancel_order(order_id)
+            return make_response(jsonify({"message":"The order has been cancelled"}), 200)
+
+        return make_response(jsonify({"message":"Order not found"}), 404)
 
 
 # change destination of a parcel class
