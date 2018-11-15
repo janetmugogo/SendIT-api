@@ -40,7 +40,8 @@ SendIT is a courier management API, which will help users in getting information
  Unit Testing
   - to test endpoints, there are tools that are required, for instance:
       -POSTMAN
- ##To test this application
+      
+ ## To test this application
  on the terminal, write this
   - nosetests --with-coverage --cover-package=app && coverage report
  

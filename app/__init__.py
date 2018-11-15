@@ -1,5 +1,5 @@
 from flask import Flask
-# from .db_config import create_tables
+from flask import Flask, jsonify, make_response
 
 
 # from config import app_config
@@ -15,6 +15,9 @@ def create_app():
     # register blueprints
     from app.api.v1 import version1
 
+    @app.errorhandler(400)
+    def page_not_found(e):
+        return jsonify({"Resource not found"})
     app.register_blueprint(version1)
 
     return app

@@ -1,18 +1,4 @@
-parcels = [
-    # {
-    #
-    # 'order_id':'1',
-    # 'name': 'mary kanyi',
-    # 'phonenumber': 22345671,
-    # 'idnumber':'3456677',
-    # 'location':'kisumu',
-    # 'address':'31154',
-    #  'weight':2,
-    #  'status': 'in-transit',
-    # 'destination':'mombasa',
-    # 'user_id': 1
-    # }
-]
+parcels = []
 
 
 class Parcels:
@@ -21,20 +7,23 @@ class Parcels:
 
     # the user creates an order and it is saved/stored in the dictionary
 
-    def save_parcel(self, name, phonenumber, idnumber, location, address, weight, user_id):
+    def save_parcel(self, name, phonenumber, idnumber, location, address, weight, price, user_id):
         new_order = {
             'order_id': len(self.db) + 1,
             'name': name,
             'phonenumber': int(phonenumber),
-            'idnumber': idnumber,
+            'idnumber': int(idnumber),
             'location': location,
-            'address': address,
+            'address': int(address),
             'weight': int(weight),
             'status': "in-transit",
-            'destination': "nairobi",
+            'destination': "destination",
+            'price': int(price),
             'user_id': user_id
         }
+
         self.db.append(new_order)
+
 
         # user can get all the orders they have created
 
@@ -53,14 +42,16 @@ class Parcels:
     def cancel_order(self, order_id, status):
         for order in self.db:
             if order['order_id'] == order_id:
-                order['status'] = status
+                if order["status"] == "undelivered":
+                  order['status'] = status
 
         # user can change the  destination of a parcel when it is in-transit
 
     def change_destination(self, order_id, destination):
         for order in self.db:
-            if order['order_id'] == order_id and order['status'] == "in-transit":
-                order['destination'] = destination
+            if order['order_id'] == order:
+                if order["status"] == "undelivered":
+                 order['destination'] = destination
 
     def specific_user_order(self, user_id):
         orders=[]
@@ -73,16 +64,7 @@ class Parcels:
         }
         return payload
 
-    # def get_all_orders_by_specific_user(self, user):
-    #     orders = []
-    #     for order in self.database:
-    #         if order["user"] == str(user):
-    #             orders.append(order)
-    #             payload = {
-    #                 "message": "success",
-    #                 "parcel_order": orders
-    #             }
-    #     return payload
+
 
 
 
