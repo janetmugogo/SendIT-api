@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ca3fdd5e-18c5-4d31-a6e4-92fc20989f11" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/tests/test_parcels.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/tests/test_parcels.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,7 +43,7 @@
     <session id="-2067106298">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="18" />
+          <entry key="project.closed" value="19" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="1" />
@@ -57,8 +57,8 @@
           <entry key="project.open.time.24" value="2" />
           <entry key="project.open.time.25" value="5" />
           <entry key="project.open.time.26" value="4" />
-          <entry key="project.open.time.27" value="4" />
-          <entry key="project.open.time.28" value="2" />
+          <entry key="project.open.time.27" value="5" />
+          <entry key="project.open.time.28" value="3" />
           <entry key="project.open.time.29" value="3" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.30" value="1" />
@@ -68,12 +68,13 @@
           <entry key="project.open.time.34" value="1" />
           <entry key="project.open.time.35" value="1" />
           <entry key="project.open.time.36" value="1" />
+          <entry key="project.open.time.37" value="1" />
           <entry key="project.open.time.38" value="1" />
           <entry key="project.open.time.39" value="1" />
           <entry key="project.open.time.42" value="2" />
           <entry key="project.open.time.44" value="1" />
           <entry key="project.open.time.58" value="1" />
-          <entry key="project.opened" value="48" />
+          <entry key="project.opened" value="51" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -82,7 +83,7 @@
           <entry key="gitignore" value="8" />
           <entry key="md" value="6" />
           <entry key="pstat" value="2" />
-          <entry key="py" value="159" />
+          <entry key="py" value="161" />
           <entry key="txt" value="8" />
           <entry key="txts" value="1" />
           <entry key="yml" value="4" />
@@ -93,7 +94,7 @@
           <entry key="Markdown" value="6" />
           <entry key="PLAIN_TEXT" value="18" />
           <entry key="Profiler Session" value="2" />
-          <entry key="Python" value="159" />
+          <entry key="Python" value="161" />
           <entry key="YAML" value="4" />
         </counts>
       </usages-collector>
@@ -102,7 +103,7 @@
           <entry key="dummy" value="25" />
           <entry key="gitignore" value="29" />
           <entry key="md" value="1691" />
-          <entry key="py" value="11698" />
+          <entry key="py" value="11707" />
           <entry key="txt" value="3" />
           <entry key="yml" value="13" />
         </counts>
@@ -111,7 +112,7 @@
         <counts>
           <entry key="Markdown" value="1691" />
           <entry key="PLAIN_TEXT" value="57" />
-          <entry key="Python" value="11694" />
+          <entry key="Python" value="11703" />
           <entry key="SQL" value="4" />
           <entry key="YAML" value="13" />
         </counts>
@@ -123,8 +124,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/api/v1/views/parcel_views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="68" column="5" lean-forward="true" selection-start-line="68" selection-start-column="5" selection-end-line="68" selection-end-column="5" />
+            <state relative-caret-position="990">
+              <caret line="68" column="5" selection-start-line="68" selection-start-column="5" selection-end-line="68" selection-end-column="5" />
               <folding>
                 <element signature="e#0#49#0" expanded="true" />
                 <marker date="1542317363482" expanded="true" signature="249:280" ph="..." />
@@ -142,15 +143,24 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/tests/test_parcels.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
+            <state relative-caret-position="570">
               <caret line="40" column="51" selection-start-line="40" selection-start-column="51" selection-end-line="40" selection-end-column="51" />
               <folding>
                 <marker date="1542318632676" expanded="true" signature="201:207" ph="..." />
                 <marker date="1542318632676" expanded="true" signature="453:670" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/db_config.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="31" column="53" lean-forward="true" selection-start-line="31" selection-start-column="53" selection-end-line="31" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -180,7 +190,6 @@
         <option value="$PROJECT_DIR$/app/tests/__init__.py" />
         <option value="$PROJECT_DIR$/.coveralls.yml" />
         <option value="$PROJECT_DIR$/requirements.txt" />
-        <option value="$PROJECT_DIR$/app/db_config.py" />
         <option value="$PROJECT_DIR$/.travis.yml" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/venv/lib/python3.5/site-packages/flask/helpers.py" />
@@ -192,6 +201,7 @@
         <option value="$PROJECT_DIR$/app/tests/test_user.py" />
         <option value="$PROJECT_DIR$/app/api/v1/views/parcel_views.py" />
         <option value="$PROJECT_DIR$/app/tests/test_parcels.py" />
+        <option value="$PROJECT_DIR$/app/db_config.py" />
       </list>
     </option>
   </component>
@@ -213,7 +223,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -276,6 +285,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -479,10 +489,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
+    <frame x="64" y="-11" width="1303" height="780" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4988399" visible="true" weight="0.2119522" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4988399" visible="true" weight="0.22231075" />
       <window_info id="Structure" order="1" sideWeight="0.5011601" side_tool="true" weight="0.20239043" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -496,7 +506,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.29037267" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32608697" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32919255" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -630,7 +640,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/db_config.py" />
     <entry file="file://$PROJECT_DIR$/Readme.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
@@ -672,23 +681,20 @@
     <entry file="file://$PROJECT_DIR$/.pytest_cache/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/api/v1/views/parcel_views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="68" column="5" lean-forward="true" selection-start-line="68" selection-start-column="5" selection-end-line="68" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-            <marker date="1542317363482" expanded="true" signature="249:280" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/tests/base_test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
           <caret line="32" column="32" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/api/v1/views/parcel_views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="990">
+          <caret line="68" column="5" selection-start-line="68" selection-start-column="5" selection-end-line="68" selection-end-column="5" />
           <folding>
-            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#0#49#0" expanded="true" />
+            <marker date="1542317363482" expanded="true" signature="249:280" ph="..." />
           </folding>
         </state>
       </provider>
@@ -702,12 +708,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/tests/test_parcels.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
+        <state relative-caret-position="570">
           <caret line="40" column="51" selection-start-line="40" selection-start-column="51" selection-end-line="40" selection-end-column="51" />
           <folding>
             <marker date="1542318632676" expanded="true" signature="201:207" ph="..." />
             <marker date="1542318632676" expanded="true" signature="453:670" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/db_config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="31" column="53" lean-forward="true" selection-start-line="31" selection-start-column="53" selection-end-line="31" selection-end-column="53" />
         </state>
       </provider>
     </entry>
