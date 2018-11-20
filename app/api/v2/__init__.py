@@ -11,6 +11,7 @@ api = Api(version2)
 
 api.add_resource(Signup, '/signup', strict_slashes=False)
 api.add_resource(Login, '/login', strict_slashes=False)
+
 # api.add_resource(Users, '/users', strict_slashes=False)
 # api.add_resource(Signup, '/username', strict_slashes=False)
 
