@@ -1,6 +1,8 @@
 from flask_restful import Resource, reqparse
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_jwt_extended import create_access_token, jwt_refresh_token_required
+from flask_jwt_extended import create_access_token, jwt_refresh_token_required,jwt_required, get_jwt_identity
+from app.utilities.validation import check_email
+
 
 from app.api.v2.models.user_model import Users
 
@@ -23,6 +25,8 @@ class Signup(Resource):
     def post(self):
         data = Signup.parser.parse_args()
         user = Users(data['username'], data['email'], data['password'])
+        if not check_email(data['email']):
+            return  {'Message': 'Invalid email'}, 401
         # instantiate a user
 
         if user.find_by_username(data['username']):
@@ -63,7 +67,17 @@ class Login(Resource):
             return {
                 'message': 'Logged in as {}'.format(data['username']),
                 'access_token': access_token
-            }
+            }, 200
         else:
             return {'Message': 'Invalid Username or Password'}, 401
 
+# class UserOrders(Resource):
+#     #users can't access other users parcels
+#     @jwt_required
+#     def get(self, user_id):
+#         if user_id != get_jwt_identity():
+#             return {'message':'cannot view other users parcels'}, 401
+#         orders = UserOrders.find_by_user_id(user_id)
+#         if not orders:
+#             return {'message':'parcels not found'}, 404
+#         return {'message':'parcels by {}'.format(user_id),'all parcels': orders}

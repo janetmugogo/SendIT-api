@@ -1,8 +1,10 @@
 import psycopg2
 import psycopg2.extras
 import os
+from instance.config import app_config
+env = os.getenv("FLASK_ENV")
 
-url = "dbname='SendIT' host='localhost' port='5432' user='postgres' password='new1'"
+url = app_config[env].DATABASE_URI
 
 def create_connection(url):
    con = psycopg2.connect(url)
@@ -24,15 +26,16 @@ def create_tables():
                         );''',
               '''CREATE TABLE IF NOT EXISTS orders(
                         order_id serial PRIMARY KEY ,
-                        sender_name CHAR (20) NOT NULL,
-                        phone_number VARCHAR (14) NULL ,
-                        id_number INT  NULL,
-                        location CHAR (20) NOT NULL,
+                        user_id integer REFERENCES users(user_id) ON DELETE CASCADE,
+                        sender_name VARCHAR (20) NOT NULL,
+                        phone_number VARCHAR (14) NOT NULL ,
+                        id_number INTEGER NOT NULL,
+                        location VARCHAR (20) NOT NULL,
                         address VARCHAR (20) NOT NULL ,
-                        weight INT NOT NULL ,
-                        status CHAR (50) NOT NULL ,
-                        destination CHAR (50) NOT NULL ,
-                        price INT NOT NULL
+                        weight INTEGER NOT NULL ,
+                        destination VARCHAR (50) NOT NULL ,
+                        price INTEGER NOT NULL,
+                        status VARCHAR (50) NOT NULL DEFAULT 'undelivered'
                         );''')
     for item in tables:
         cur.execute(item)

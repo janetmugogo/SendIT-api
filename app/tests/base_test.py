@@ -17,7 +17,7 @@ class BaseTest(unittest.TestCase):
         self.app = create_app()
         self.client = self.app.test_client()
 
-        self.test_parcel = {
+        self.test_create_parcel = {
             "name": "Malcolm",
             "phonenumber":5678954321,
             "idnumber": 3456890,
