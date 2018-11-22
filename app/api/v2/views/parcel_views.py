@@ -84,11 +84,12 @@ class Cancel(Resource):
             return {'message':'No order by that id found'}
         result = Parcels.cancel_order(self,order_id)
             # return make_response(jsonify(result))
-        return make_response(jsonify({"message":"Order has been cancelled"}), 201)
+        return make_response(jsonify({"message":"Order has been cancelled"}), 400)
 
 
 # specific user class
 class SpecificUserOrder(Resource):
+    @jwt_required
     #fetch all parcel delivery orders by specific id
     def get(self, user_id):
         user_id = int(user_id)
@@ -97,6 +98,7 @@ class SpecificUserOrder(Resource):
             return {'message':'No user with that id'}
         return user_order
 class ChangeDestination(Resource):
+    @jwt_required
     def put(self, order_id):
         destination = request.get_json()['destination'] #key in request body
         new_destination = Parcels.change_destination(self, destination, order_id)

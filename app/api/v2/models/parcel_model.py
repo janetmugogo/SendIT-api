@@ -54,10 +54,26 @@ class Parcels():
        con = psycopg2.connect(url)
        cur = con.cursor(cursor_factory=psycopg2.extras.DictCursor)
        query = "SELECT * FROM orders WHERE order_id=%s"
-       cur.execute(query,(order_id,))
-       row = cur.fetchone()
-       order = row
-       return  order
+       parcels=cur.execute(query,(order_id,))
+       parcels = cur.fetchall()
+       result = []
+       print(parcels)
+       for parcel in parcels:
+           object = {
+           "order_id": parcel[0],
+           "user_id": parcel[1],
+           "sender_name": parcel[2],
+           "phonenumber": parcel[3],
+           "idnumber": parcel[4],
+           "location": parcel[5],
+           "address": parcel[6],
+           "weight": parcel[7],
+           "destination": parcel[8],
+           "price": parcel[9],
+           "status": parcel[10],
+           }
+       result.append(object)
+       return result
 
    def cancel_order(self, order_id):
        con = psycopg2.connect(url)

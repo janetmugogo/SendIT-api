@@ -6,6 +6,7 @@ from flask_jwt_extended import JWTManager
 #pick flaskenv from env
 config = os.getenv("FLASK_ENV")
 app = create_app(config)
+print(config)
 app.config['JWT_SECRET_KEY'] = 'jwt-secret-string'
 jwt = JWTManager(app)
 

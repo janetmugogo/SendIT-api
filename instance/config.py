@@ -17,9 +17,8 @@ class DevelopmentConfig(Config):
 class TestingConfig(Config):
     #configuration for testing db
     TESTING = True
-    DATABASE_URI = os.getenv('DATABASE_TEST')
+    DATABASE_URI = os.getenv('DATABASE_TESTING')
     DEBUG = True
-
 
 class ProductionConfig(Config):
     #Configurations for Production
