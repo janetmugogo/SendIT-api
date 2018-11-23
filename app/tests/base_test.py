@@ -31,12 +31,17 @@ class BaseTest(unittest.TestCase):
             "confirm_password": "123j"
          }
         self.login_user = {
+            "username": "melany",
+            "password": "123j"
+
+        }
+        self.wrong_login_user = {
             "username": "juzi",
             "password": "123j"
 
         }
         self.create_parcel = {
-            "user_id": 1,
+            "user_id": '1',
             "sender_name": "Melody",
             "phone_number": 5678954321,
             "id_number": 3456890,
@@ -45,34 +50,35 @@ class BaseTest(unittest.TestCase):
             "weight": 2,
             "destination":"tanzania"
         }
-        # self.invalid_order = {
-        #     "name": "Malcolm",
-        #     "phonenumber": '56789xyz',
-        #     "idnumber": 3456890,
-        #     "location": 4444444,
-        #     "address": 3467134,
-        #     "weight": "",
-        #     "user_id": "",
-        #     "order_id": ""
-        # }
-        # self.change_destination = {
-        #     "destination": "mombasa"
-        # }
-        #
+        self.invalid_order = {
+            "user_id":"700",
+            "sender_name": "Malcolm",
+            "phone_number": '56789xyz',
+            "id_number": 3456890,
+            "location": 4444444,
+            "address": 3467134,
+            "weight": "",
+            # "user_id": ""
+            # "order_id": ""
+        }
+        self.change_destination = {
+            "destination": "mombasa"
+        }
+
         # self.invalid_destination_details = {
         #     "destination": ''
         # }
-        # self.cancel_unexisting_order = {
-        #     "qwertytyui": ''
-        # }
+        self.cancel_unexisting_order = {
+            "qwertytyui": ''
+        }
 
-    # def register_normal__user(self):
-    #     self.client.post('/api/v2/auth/signup', data=json.dumps(self.register_user),content_type='application/json')
-    #     resp = self.client.post('/api/v2/auth/login', data=json.dumps(self.test_login_user),content_type='application/json')
-    #     return resp["access_token"]
+
+
 
 
     def tearDown(self):
-        pass
+        drop_tables()
+
+
 
 

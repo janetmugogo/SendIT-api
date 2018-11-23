@@ -14,8 +14,15 @@ class TestUser(BaseTest):
         self.assertEqual(resp.status_code, 201)
 
     def test_inexistent_user(self):
+        self.client.post('/api/v2/auth/signup', json=self.register_user)
+        resp = self.client.post('/api/v2/auth/login', json=self.wrong_login_user)
+        self.assertEqual(resp.status_code, 403)
+    def test_login_user(self):
+        self.client.post('/api/v2/auth/signup', json=self.register_user)
         resp = self.client.post('/api/v2/auth/login', json=self.login_user)
-        self.assertEqual(resp.status_code, 400)
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn('access_token', str(resp.data))
+
 
 
 

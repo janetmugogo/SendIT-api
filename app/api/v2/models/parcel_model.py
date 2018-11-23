@@ -1,10 +1,11 @@
 import psycopg2
 import psycopg2.extras
+from flask_jwt_extended import get_jwt_identity
 
 url = "dbname='SendIT' host='localhost' port='5432' user='postgres' password='new1'"
 
 class Parcels():
-   def __init__(self,user_id=None, sender_name=None, phone_number=None, id_number=None, location=None, address=None, weight=None, destination=None, price =None):
+   def __init__(self, user_id=None, sender_name=None, phone_number=None, id_number=None, location=None, address=None, weight=None, destination=None, price =None):
        self.user_id = user_id
        self.sender_name = sender_name
        self.phone_number = phone_number
@@ -72,7 +73,7 @@ class Parcels():
            "price": parcel[9],
            "status": parcel[10],
            }
-       result.append(object)
+           result.append(object)
        return result
 
    def cancel_order(self, order_id):
@@ -96,6 +97,7 @@ class Parcels():
        row = cur.fetchall()
        order = row
        return order
+
    def change_destination(self, destination, order_id):
        con = psycopg2.connect(url)
        cur = con.cursor(cursor_factory=psycopg2.extras.DictCursor)
