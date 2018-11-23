@@ -1,25 +1,24 @@
-from flask import Flask
-from flask import Flask, jsonify, make_response
+from flask import Flask, jsonify
 from flask_jwt_extended import JWTManager
 
+from instance.config import app_config
 from app import db_config
-from app.db_config import drop_tables,create_tables
-
-url = "dbname='SendIT' host='localhost' port='5432' user='postgres' password='new1'"
+from app.db_config import drop_tables, create_tables
 
 
-def create_app():
+def create_app(config):
     # creates and configurs the app
     app = Flask(__name__, instance_relative_config=True)
+    app.config.from_object(app_config[config])
+    create_tables()
     app.config['JWT_SECRET_KEY'] = 'jwt-secret-string'
+
     JWTManager(app)
     # register blueprints
     from app.api.v1 import version1
     from app.api.v2 import version2
-    # db_init()
-    # query = """INSERT INTO users VALUES(DEFAULT ,%s,%s,%s,%s)"""
-    # cur.execute(query, ('one', 'two', 'two', 'three'))
-    # con.commit()
+
+
     @app.errorhandler(500)
     def page_not_found():
         return jsonify({"error":"Resource not found"})
